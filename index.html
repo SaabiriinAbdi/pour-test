@@ -119,30 +119,10 @@
         <!-- 6 -->
         <h3>Video Without Captions</h3>
         <video controls width="320">
-            <source src="version2.webm" type="video/webm"> 
             <source src="version1.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
         <!-- No <track> for captions -->
-        
-        <p id="videoFormat" style="font-weight: bold; margin-top: 8px;"></p>        
-            <script>
-                document.getElementById("testVideo").addEventListener("loadeddata", function() {
-                    const video = document.getElementById("testVideo");
-                    const formatDisplay = document.getElementById("videoFormat");
-
-                    const currentSrc = video.currentSrc;
-
-                    if (currentSrc.includes("webm")) {
-                        formatDisplay.textContent = "Your browser is playing: WEBM version";
-                    } else if (currentSrc.includes("mp4")) {
-                        formatDisplay.textContent = "Your browser is playing: MP4 version";
-                    } else {
-                        formatDisplay.textContent = "Could not detect which version is playing.";
-                    }
-                });
-            </script>
-
 
         <!-- 1.3.2 Meaningful Sequence – DOM vs visual order mismatch -->
         <!-- 7 -->
