@@ -125,6 +125,24 @@
         </video>
         <!-- No <track> for captions -->
 
+            <script>
+                document.getElementById("testVideo").addEventListener("loadeddata", function() {
+                    const video = document.getElementById("testVideo");
+                    const formatDisplay = document.getElementById("videoFormat");
+
+                    const currentSrc = video.currentSrc;
+
+                    if (currentSrc.includes("webm")) {
+                        formatDisplay.textContent = "Your browser is playing: WEBM version";
+                    } else if (currentSrc.includes("mp4")) {
+                        formatDisplay.textContent = "Your browser is playing: MP4 version";
+                    } else {
+                        formatDisplay.textContent = "Could not detect which version is playing.";
+                    }
+                });
+            </script>
+
+
         <!-- 1.3.2 Meaningful Sequence – DOM vs visual order mismatch -->
         <!-- 7 -->
         <h3>Meaningful Sequence</h3>
