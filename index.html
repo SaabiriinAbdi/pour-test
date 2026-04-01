@@ -5,6 +5,10 @@
 <html> <!-- VIOLATION: 3.1.1 Language of Page (missing lang attribute) -->
 <head>
     <title></title> <!-- VIOLATION: 2.4.2 Page Titled -->
+
+    <!-- WCAG 2.2.1 Timing Adjustable (Level A) -->
+    <meta http-equiv="refresh" content="5">
+
     <style>
         /* VIOLATION: 1.4.3 Contrast (Minimum) */
         .low-contrast {
@@ -15,10 +19,11 @@
         /* VIOLATION: 1.4.11 Non-text Contrast */
         .low-border {
             border: 1px solid #aaa;
+            background-color: #bbb;
         }
 
         /* VIOLATION: 2.4.7 Focus Visible */
-        a:focus {
+        *:focus {
             outline: none;
         }
     </style>
@@ -28,119 +33,116 @@
 <!-- ================= PERCEIVABLE ================= -->
 <h2>Perceivable Violations</h2>
 
-<!-- 1.1.1 Non-text Content (Level A) -->
-<img src="image.jpg"> <!-- Missing alt -->
+<!-- WCAG 1.1.1 Non-text Content (Level A) -->
+<!-- VIOLATION: Missing alt text -->
+<img id="P-1.1.1-1" src="image.jpg">
 
-<!-- 1.3.1 Info and Relationships (Level A) -->
-<h4>Incorrect Heading Structure</h4>
+<!-- WCAG 1.3.1 Info and Relationships (Level A) -->
+<h4 id="P-1.3.1-1">Incorrect Heading Structure</h4>
 <h2>Skipped Heading Level</h2>
 
-<!-- 1.4.1 Use of Color (Level A) -->
-<p style="color:red">Important information shown only in red</p>
+<!-- WCAG 1.4.1 Use of Color (Level A) -->
+<p id="P-1.4.1-1" style="color:red">Important information shown only in red</p>
 
-<!-- 1.4.3 Contrast (Minimum) (Level AA) -->
-<p class="low-contrast">Low contrast text</p>
+<!-- WCAG 1.4.3 Contrast (Minimum) (Level AA) -->
+<p id="P-1.4.3-1" class="low-contrast">Low contrast text</p>
 
-<!-- 1.4.5 Images of Text (Level AA) -->
-<img src="text-image.png" alt=""> <!-- text embedded in image -->
+<!-- WCAG 1.4.5 Images of Text (Level AA) -->
+<img id="P-1.4.5-1" src="text-image.png" alt="">
 
-<!-- 1.2.2 Captions (Prerecorded) (Level A) -->
-<video controls>
-    <source src="video.mp4" type="video/mp4">
-</video> <!-- Missing captions -->
+<!-- WCAG 1.2.2 Captions (Prerecorded) (Level A) -->
+<video id="P-1.2.2-1" controls>
+    <source src="version2.webm" type="video/webm">
+</video>
 
-<!-- 1.3.2 Meaningful Sequence (Level A) -->
-<div>
-    <span>Step 2</span>
-    <span>Step 1</span>
+<!-- WCAG 1.3.2 Meaningful Sequence (Level A) -->
+<div id="P-1.3.2-1">
+    <span>Step 2: Submit form</span>
+    <span>Step 1: Fill form</span>
 </div>
 
-<!-- 1.4.4 Resize Text (Level AA) -->
-<p style="font-size:10px">Text that does not scale well</p>
+<!-- WCAG 1.4.4 Resize Text (Level AA) -->
+<p id="P-1.4.4-1" style="font-size:10px">Text that does not scale well</p>
 
-<!-- 1.4.10 Reflow (Level AA) -->
-<div style="width:1200px">Fixed layout breaks reflow</div>
+<!-- WCAG 1.4.10 Reflow (Level AA) -->
+<div id="P-1.4.10-1" style="width:1200px">Fixed layout breaks reflow</div>
 
-<!-- 1.4.11 Non-text Contrast (Level AA) -->
-<button class="low-border">Low contrast button</button>
+<!-- WCAG 1.4.11 Non-text Contrast (Level AA) -->
+<button id="P-1.4.11-1" class="low-border">Low contrast button</button>
 
 
 <!-- ================= OPERABLE ================= -->
 <h2>Operable Violations</h2>
 
-<!-- 2.1.1 Keyboard (Level A) -->
-<div onclick="alert('clicked')">Click me</div> <!-- Not keyboard accessible -->
+<!-- WCAG 2.1.1 Keyboard (Level A) -->
+<div id="O-2.1.1-1" onclick="alert('clicked')" tabindex="-1">
+    Click me (not keyboard accessible)
+</div>
 
-<!-- 2.1.2 No Keyboard Trap (Level A) -->
-<input onkeydown="if(event.key==='Tab'){event.preventDefault();}">
+<!-- WCAG 2.1.2 No Keyboard Trap (Level A) -->
+<!-- VIOLATION: Prevents keyboard navigation (Tab key blocked) -->
+<input id="O-2.1.2-1" onkeydown="if(event.key==='Tab'){event.preventDefault();}">
 
-<!-- 2.4.1 Bypass Blocks (Level A) -->
+<!-- WCAG 2.4.1 Bypass Blocks (Level A) -->
 <!-- Missing skip navigation link -->
+<!-- EXPECTED: Tool may detect missing bypass mechanism -->
 
-<!-- 2.4.2 Page Titled (Level A) already above -->
-
-<!-- 2.4.3 Focus Order (Level A) -->
-<input tabindex="3">
+<!-- WCAG 2.4.3 Focus Order (Level A) -->
+<input id="O-2.4.3-1" tabindex="3">
 <input tabindex="1">
 <input tabindex="2">
 
-<!-- 2.4.4 Link Purpose (Level A) -->
-<a href="#">Click here</a>
+<!-- WCAG 2.4.4 Link Purpose (Level A) -->
+<a id="O-2.4.4-1" href="#">Click here</a>
 
-<!-- 2.4.7 Focus Visible (Level AA) already in CSS -->
 
-<!-- 2.2.1 Timing Adjustable (Level A) -->
-<meta http-equiv="refresh" content="5"> <!-- Auto refresh -->
+<!-- WCAG 2.2.2 Pause, Stop, Hide (Level A) -->
+<marquee id="O-2.2.2-1">Scrolling text cannot be paused</marquee>
 
-<!-- 2.2.2 Pause, Stop, Hide (Level A) -->
-<marquee>Scrolling text cannot be paused</marquee>
-
-<!-- 2.5.3 Label in Name (Level A) -->
-<button aria-label="Submit Form">Go</button>
+<!-- WCAG 2.5.3 Label in Name (Level A) -->
+<button id="O-2.5.3-1" aria-label="Submit Form">Go</button>
 
 
 <!-- ================= UNDERSTANDABLE ================= -->
 <h2>Understandable Violations</h2>
 
-<!-- 3.1.1 Language of Page already violated -->
-
-<!-- 3.2.3 Consistent Navigation -->
+<!-- WCAG 3.2.3 Consistent Navigation -->
 <nav>
     <a href="page1.html">Home</a>
 </nav>
 <nav>
-    <a href="page1.html">Start</a> <!-- Inconsistent naming -->
+    <a href="page1.html">Start</a>
 </nav>
 
-<!-- 3.2.4 Consistent Identification -->
-<button>Search</button>
+<!-- WCAG 3.2.4 Consistent Identification -->
+<button id="U-3.2.4-1">Search</button>
 <button>Find</button>
 
-<!-- 3.3.1 Error Identification -->
-<form>
+<!-- WCAG 3.3.1 Error Identification -->
+<form id="U-3.3.1-1">
     <input type="text">
-</form> <!-- No error indication -->
+</form>
 
-<!-- 3.3.2 Labels or Instructions -->
-<input type="text"> <!-- Missing label -->
+<!-- WCAG 3.3.2 Labels or Instructions -->
+<input id="U-3.3.2-1" type="text">
 
-<!-- 3.3.3 Error Suggestion -->
-<input type="email"> <!-- No suggestion -->
+<!-- WCAG 3.3.3 Error Suggestion -->
+<input id="U-3.3.3-1" type="email">
 
-<!-- 3.3.4 Error Prevention (Level AA) -->
-<form>
+<!-- WCAG 3.3.4 Error Prevention (Level AA) -->
+<form id="U-3.3.4-1">
     <input type="text">
     <button>Submit</button>
 </form>
 
-<!-- 3.1.2 Language of Parts -->
-<p>Bonjour</p> <!-- No lang attribute -->
+<!-- WCAG 3.1.2 Language of Parts -->
+<p id="U-3.1.2-1">Bonjour</p>
 
-<!-- 3.2.1 On Focus -->
-<input onfocus="alert('focus change')">
+<!-- WCAG 3.2.1 On Focus -->
+<input id="U-3.2.1-1" onfocus="alert('focus change')">
 
-<!-- 3.2.2 On Input -->
-<select onchange="window.location='page2.html'">
+<!-- WCAG 3.2.2 On Input -->
+<select id="U-3.2.2-1" onchange="window.location='page2.html'">
     <option>Go</option>
 </select>
 
@@ -148,52 +150,59 @@
 <!-- ================= ROBUST ================= -->
 <h2>Robust Violations</h2>
 
-<!-- 4.1.1 Parsing (Level A) -->
-<div>
-    <p>Unclosed div
+<!-- WCAG 4.1.1 Parsing (Level A) -->
+<p id="R-4.1.1-1"><div>Improper nesting</div></p>
 
-<!-- 4.1.2 Name, Role, Value -->
-<div role="button" aria-pressed="maybe">Invalid ARIA</div>
+<!-- WCAG 4.1.2 Name, Role, Value -->
+<div id="R-4.1.2-1" role="button" aria-pressed="maybe">Invalid ARIA</div>
 
-<!-- 4.1.3 Status Messages (Level AA) -->
-<div id="status"></div> <!-- No ARIA live region -->
+<!-- WCAG 4.1.3 Status Messages (Level AA) -->
+<div id="R-4.1.3-1"></div>
+<button onclick="document.getElementById('R-4.1.3-1').innerText='Updated';">
+    Trigger status message
+</button>
 
-<!-- Duplicate IDs -->
+<!-- WCAG 4.1.1 Parsing / 4.1.2 Name, Role, Value -->
+<!-- VIOLATION: Duplicate IDs -->
 <div id="duplicate"></div>
 <div id="duplicate"></div>
 
 <!-- Non-semantic interactive element -->
-<div onclick="doSomething()">Fake Button</div>
+<div id="R-4.1.2-2" onclick="alert('clicked')" tabindex="-1">
+    Clickable element not accessible
+</div>
 
-<!-- Missing role attributes -->
-<div>Interactive but no role</div>
+<!-- Missing role attribute -->
+<div id="R-4.1.2-3" onclick="alert('clicked')" role="">
+    Interactive but no valid role
+</div>
 
 <!-- Broken ARIA relationships -->
-<div aria-labelledby="missing-id"></div>
-
+<div id="R-4.1.2-4" aria-labelledby="missing-id"></div>
 
 
 <!-- ================= AAA (ADVANCED / NON-AUTOMATABLE) ================= -->
-<h2>AAA Violations (Non-Automatable)</h2>
+<!-- NOTE: AAA violations included to evaluate limits of automated tools -->
+ <h2>AAA Violations (Non-Automatable)</h2>
 
-<!-- 3.1.5 Reading Level (Level AAA) -->
-<!-- VIOLATION: Text is overly complex with no simplified alternative provided -->
-<p>
+<!-- WCAG 3.1.5 Reading Level (Level AAA) -->
+<!-- EXPECTED: Not detected by automated tools -->
+<p id="AAA-3.1.5-1">
 The epistemological ramifications of asynchronous computational paradigms 
 necessitate a multifaceted analytical framework, thereby obfuscating accessibility 
 for users lacking domain-specific literacy.
 </p>
 
-<!-- 3.1.6 Pronunciation (Level AAA) -->
-<!-- VIOLATION: Ambiguous words without pronunciation guidance -->
-<p>
+<!-- WCAG 3.1.6 Pronunciation (Level AAA) -->
+<!-- EXPECTED: Not detected by automated tools -->
+<p id="AAA-3.1.6-1">
 They will lead the project using lead materials.
 </p>
 
-<!-- 1.2.7 Extended Audio Description (Level AAA) -->
-<!-- VIOLATION: Video lacks extended audio descriptions for visual content -->
-<video controls width="400">
-    <source src="complex-scene.mp4" type="video/mp4">
+<!-- WCAG 1.2.7 Extended Audio Description (Level AAA) -->
+<!-- EXPECTED: Not detected by automated tools -->
+<video id="AAA-1.2.7-1" controls width="400">
+    <source src="version2.webm" type="video/webm">
 </video>
 <p>
 This video contains important visual-only information without extended audio description.
